@@ -1,70 +1,42 @@
 ###################
-What is CodeIgniter
+Instructions 
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+- PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST. 
+- The origin (0,0) can be considered to be the SOUTH WEST most corner. 
+- The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command. The application should discard all commands in the sequence until a valid PLACE command has been executed. 
+- MOVE will move the toy robot one unit forward in the direction it is currently facing. 
+- LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot. 
+- REPORT will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient. 
+- A robot that is not on the table can choose the ignore the MOVE, LEFT, RIGHT and REPORT commands. 
+- Input can be from a file, or from standard input, as the developer chooses. 
+- Provide test data to exercise the application.
 
 *******************
-Release Information
+Constraints
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+- The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot. 
+- Any move that would cause the robot to fall must be ignored or prevented.
 
 **************************
-Changelog and New Features
+Example Input and Output
 **************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
-
-*******************
-Server Requirements
-*******************
-
-PHP version 5.6 or newer is recommended.
-
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
-
-************
-Installation
-************
-
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
-
-*******
-License
-*******
-
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community IRC <https://webchat.freenode.net/?channels=%23codeigniter>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+Example A 
+PLACE 0,0,NORTH MOVE REPORT 
+ 
+Expected output: 
+0,1,NORTH 
+ 
+Example B 
+PLACE 0,0,NORTH LEFT REPORT 
+ 
+Expected output: 
+0,0,WEST 
+ 
+Example C 
+PLACE 1,2,EAST MOVE MOVE LEFT MOVE REPORT 
+ 
+Expected output 
+3,3,NORTH 
